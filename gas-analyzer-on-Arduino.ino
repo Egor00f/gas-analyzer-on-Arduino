@@ -136,6 +136,8 @@ void Settings()
 	lcd.print(SETTINGS_STR);
 	
 	delay(200);
+
+	
 	uint8_t i = 0;
 	
 	#define SETTINGS_LIST_SIZE 4
@@ -157,6 +159,12 @@ void Settings()
 			i++;
 		}
 		else if (centerButton.click()) {
+
+			//Выход из настроек
+			if (i == SETTINGS_LIST_SIZE - 1){
+				return;
+			}
+			
 			//настройка самого параметра
 			uint8_t j;
 			
