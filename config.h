@@ -10,15 +10,15 @@
 //==============CONFIG================================
 
 //если меньше этого занчения то OK, больше Control
-#define DEFAULT_MIN_GAS 350
+#define DEFAULT_MIN_GAS 	350
 
 //больше этого значения Critical
-#define DEFAULT_MAX_GAS 500
+#define DEFAULT_MAX_GAS 	500
 
 
 //ПИНЫ
-#define MQ2_PIN			A0
-#define BUZER_PIN		6
+#define MQ2_PIN				A0
+#define BUZER_PIN			6
 
 #define BUTTON_CENTER_PIN	4
 #define BUTTON_LEFT_PIN		3
@@ -26,12 +26,15 @@
 
 
 //светодиоды
+
+#define RGBLED		false
+#define STANDARTLED true
 /*
 	Можно использовать 3 цветных светодиода(красных, жёлтый и зелёный),
 	а можно использовать RGB светодиод
 	по умолчанию RGBLED
 */
-#define DEFAULT_LED_TYPE  RGBLED
+#define DEFAULT_LED_TYPE  	RGBLED
 #define LED_PIN_RED			13
 #define LED_PIN_BLUE		11
 #define LED_PIN_GREEN		12
@@ -49,7 +52,8 @@
 //частота пищания
 #define FREQ	900
 
-
+//Адресс конфига в EEPROM
+#define CONFIG_ADDR 0
 
 //ЯЗЫК
 #define DEFAULT_LANG "R"
