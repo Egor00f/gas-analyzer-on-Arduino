@@ -2,9 +2,7 @@
 #define LED_H
 
 #include "rgbLed.h"
-
-#define RGBLED		false
-#define STANDARTLED true
+#include "config.h"
 
 
 //Просто переключает светодиоды
@@ -18,22 +16,26 @@ void ledColor(char color, bool LEDS, uint8_t pinR, uint8_t pinG, uint8_t pinB, u
 		led.setColor(color);
 	}
 	//Иначе, просто 3 светодиода
-	else { 
+	else 
+	{ 
 		//Да, светодиоды приходится переключать в ручную
-		if (color == "R") {
+		if (color == "R") 
+		{
 			digitalWrite(pinR, 	HIGH);
-			digitalWrite(pinY, LOW);
-			digitalWrite(pinG, LOW);
+			digitalWrite(pinY, 	LOW);
+			digitalWrite(pinG, 	LOW);
 		}
-		else if (color == "Y") {
+		else if (color == "Y") 
+		{
 			digitalWrite(pinR,	LOW);
-			digitalWrite(pinY, HIGH);
-			digitalWrite(pinG, LOW);
+			digitalWrite(pinY, 	HIGH);
+			digitalWrite(pinG, 	LOW);
 		}
-		else if (color == "G") {
+		else if (color == "G") 
+		{
 			digitalWrite(pinR, 	LOW);
-			digitalWrite(pinY, LOW);
-			digitalWrite(pinG, HIGH);
+			digitalWrite(pinY, 	LOW);
+			digitalWrite(pinG, 	HIGH);
 		}
 	}
 }
