@@ -10,13 +10,14 @@
 class rgbLed{
 	private:
 	
-	uint8_t pinR, pinG, pinB; //Пины к которым подключен светодиод
+	uint8_t pinR, pinG, pinB;				//Пины к которым подключен светодиод
 	
-	bool r, g, b;					//Цвета
+	bool r, g, b;						//Цвета
 	
-	bool on = true; 				//Состояние светодиода (ВКЛ/ВЫКЛ)
+	bool on = true; 					//Состояние светодиода (ВКЛ/ВЫКЛ)
 	
 	//Обновление состояния светодиода
+	//Вызывается для применения любых изменений
 	void update() { 
 		if (on) {					//Если по настройкам включен
 			digitalWrite(pinR, r);
@@ -33,13 +34,15 @@ class rgbLed{
 	
 	public:
 	//Конструктор класса
-	rgbLed(uint8_t pinR = 0, uint8_t pinG = 0, uint8_t pinB = 0, bool ON = true){
+	//  пины: красного         зелёного         синего   цветов. Включен ли светодиод по умолчанию
+	rgbLed(uint8_t pinR = 0, uint8_t pinG = 0, uint8_t pinB = 0, bool Status = true){
 		if (pinR == pinG and pinG == pinB) {
 			pinMode(pinR, OUTPUT);
 			pinMode(pinG, OUTPUT);
 			pinMode(pinB, OUTPUT);
-			on = ON;
+			on = Status;
 		}
+		update();
 	}
 	
 	//Включение/выключение светодиода
@@ -48,8 +51,8 @@ class rgbLed{
 		update();
 	}
 	
-	void Switch(bool ON){ //Указать конкретное значение
-		on = ON;
+	void Switch(bool newSatatus){ //Указать конкретное значение
+		on = newSatatus;
 		update();
 	}
 	
@@ -73,38 +76,24 @@ class rgbLed{
 	
 	*/
 	void setColor(char color) {
-		//приходится в ручную указывать
 		if (color == "R") {
-			r = true;
-			g = false;
-			b = false;
+			setRGB(true, false, false);
 		}
 		else if (color == "G") {
-			r = false;
-			g = true;
-			b = false;
+			setRGB(false, true, false);
 		}
 		else if (color == "B") {
-			r = false;
-			g = false;
-			b = true;
+			setRGB(false, false, true);
 		}
 		else if (color == "Y") {
-			r = true;
-			g = true;
-			b = false;
+			setRGB(true, true, false);
 		}
 		else if (color == "P") {
-			r = true;
-			g = false;
-			b = true;
+			setRGB(true, false, true);
 		}
 		else if (color == "W") {
-			r = true;
-			g = true;
-			b = true;
+			setRGB(true, true, true);
 		}
-		update();
 	}
 	
 };
