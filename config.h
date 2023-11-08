@@ -7,7 +7,16 @@
 
 #include "led.h"
 
-//==============CONFIG================================
+
+struct CONFIG {
+	//Пороговые значения	
+	int16_t MIN_GAS;
+	int16_t MAX_GAS;
+
+	bool LEDS;		//Светодиоды
+	char lang;		//Язык
+};
+//==============CONFIG===========================
 
 //если меньше этого занчения то OK, больше Control
 #define DEFAULT_MIN_GAS 	350
